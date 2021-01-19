@@ -11,41 +11,41 @@ namespace mobileserver.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FoodController : ControllerBase
+    public class NotificationsController : ControllerBase
     {
         private readonly IDataAccessProvider _dataAccessProvider;
 
-        public FoodController(IDataAccessProvider dataAccessProvider)
+        public NotificationsController(IDataAccessProvider dataAccessProvider)
         {
             _dataAccessProvider = dataAccessProvider;
         }
         [HttpGet("get")]
-        public async Task<List<Food>> Get()
+        public async Task<List<Notifications>> Get()
         {
-            return await _dataAccessProvider.GetFOODRecords();
+            return await _dataAccessProvider.GetNTRecords();
         }
         [HttpGet("getid/{id}")]
-        public async Task<Food> Details (string id)
+        public async Task<Notifications> Details(string id)
         {
-            return await _dataAccessProvider.GetFOODSingleRecord(id);
+            return await _dataAccessProvider.GetNTSingleRecord(id);
         }
         [HttpPost("post")]
-        public IActionResult Create([FromBody] Food food)
+        public IActionResult Create([FromBody] Notifications food)
         {
             if (ModelState.IsValid)
             {
-                _dataAccessProvider.AddFOODRecord(food);
+                _dataAccessProvider.AddNTRecord(food);
                 return Ok();
             }
             return BadRequest();
         }
 
         [HttpPut("edit")]
-        public IActionResult Edit([FromBody] Food k)
+        public IActionResult Edit([FromBody] Notifications k)
         {
             if (ModelState.IsValid)
             {
-                _dataAccessProvider.UpdateFOODRecord(k);
+                _dataAccessProvider.UpdateNTRecord(k);
                 return Ok();
             }
             return BadRequest();
@@ -53,13 +53,13 @@ namespace mobileserver.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(string id)
         {
-            var data = _dataAccessProvider.GetFOODSingleRecord(id);
+            var data = _dataAccessProvider.GetNTSingleRecord(id);
             Console.WriteLine(id);
             if (data == null)
             {
                 return NotFound();
             }
-            _dataAccessProvider.DeleteFOODRecord(id);
+            _dataAccessProvider.DeleteNTRecord(id);
             return Ok();
         }
     }

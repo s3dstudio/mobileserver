@@ -16,13 +16,14 @@ namespace mobileserver.DAL
             _context = context;
         }
 
-        public async Task AddKHDTRecord(Food FOOD)
+        //FOOD
+        public async Task AddFOODRecord(Food FOOD)
         {
             _context.Food.Add(FOOD);
             _context.SaveChangesAsync();
         }
 
-        public async Task DeleteKHDTRecord(string id)
+        public async Task DeleteFOODRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.Food.FirstOrDefault(t => Convert.ToString(t.idfood) == id);
@@ -35,14 +36,107 @@ namespace mobileserver.DAL
             return await _context.Food.OrderByDescending(m => EF.Property<string>(m, "idfood")).ToListAsync();
         }
 
-        public async Task<Food> GetKHDTSingleRecord(string id)
+        public async Task<Food> GetFOODSingleRecord(string id)
         {
             return await _context.Food.FirstOrDefaultAsync(m => m.idfood == id);
         }
 
-        public async Task UpdateKHDTRecord(Food FOOD)
+        public async Task UpdateFOODRecord(Food FOOD)
         {
             _context.Food.Update(FOOD);
+            _context.SaveChangesAsync();
+        }
+
+        //USER
+        public async Task AddUSERRecord(Users USER)
+        {
+            _context.Users.Add(USER);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUSERRecord(string id)
+        {
+            Console.WriteLine(id);
+            var entity = _context.Users.FirstOrDefault(t => Convert.ToString(t.idUsers) == id);
+            _context.Users.Remove(entity);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Users>> GetUSERRecords()
+        {
+            return await _context.Users.OrderByDescending(m => EF.Property<string>(m, "idUsers")).ToListAsync();
+        }
+
+        public async Task<Users> GetUSERSingleRecord(string id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(m => m.idUsers == id);
+        }
+
+        public async Task UpdateUSERRecord(Users USER)
+        {
+            _context.Users.Update(USER);
+            _context.SaveChangesAsync();
+        }
+
+        //FOODSCARTS
+        public async Task AddFCRecord(FoodsCart FC)
+        {
+            _context.FoodsCart.Add(FC);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteFCRecord(string id)
+        {
+            Console.WriteLine(id);
+            var entity = _context.FoodsCart.FirstOrDefault(t => Convert.ToString(t.idCart) == id);
+            _context.FoodsCart.Remove(entity);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task<List<FoodsCart>> GetFCRecords()
+        {
+            return await _context.FoodsCart.OrderByDescending(m => EF.Property<string>(m, "idCart")).ToListAsync();
+        }
+
+        public async Task<FoodsCart> GetFCSingleRecord(string id)
+        {
+            return await _context.FoodsCart.FirstOrDefaultAsync(m => m.idCart == id);
+        }
+
+        public async Task UpdateFCRecord(FoodsCart FC)
+        {
+            _context.FoodsCart.Update(FC);
+            _context.SaveChangesAsync();
+        }
+
+        //NOTIFICATIONS
+        public async Task AddNTRecord(Notifications NT)
+        {
+            _context.Notifications.Add(NT);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteNTRecord(string id)
+        {
+            Console.WriteLine(id);
+            var entity = _context.Notifications.FirstOrDefault(t => Convert.ToString(t.idnotification) == id);
+            _context.Notifications.Remove(entity);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Notifications>> GetNTRecords()
+        {
+            return await _context.Notifications.OrderByDescending(m => EF.Property<string>(m, "idnotification")).ToListAsync();
+        }
+
+        public async Task<Notifications> GetNTSingleRecord(string id)
+        {
+            return await _context.Notifications.FirstOrDefaultAsync(m => m.idnotification == id);
+        }
+
+        public async Task UpdateNTRecord(Notifications FC)
+        {
+            _context.Notifications.Update(FC);
             _context.SaveChangesAsync();
         }
     }

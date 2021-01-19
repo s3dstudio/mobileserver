@@ -14,14 +14,21 @@ namespace mobileserver.DAL
         }
 
         public DbSet<Food> Food { get; set; }
-
-
+        public DbSet<Users> Users { get; set; }
+        public DbSet<FoodsCart> FoodsCart { get; set; }
+        public DbSet<Notifications> Notifications { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Food>()
                 .HasKey("idfood");
+            builder.Entity<Users>()
+                .HasKey("idUsers");
+            builder.Entity<FoodsCart>()
+                .HasKey("idCart");
+            builder.Entity<Notifications>()
+                .HasKey("idnotification");
 
         }
 
