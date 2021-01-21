@@ -31,5 +31,12 @@ namespace mobileserver.DAL
         Task DeleteNTRecord(string id);
         Task<Notifications> GetNTSingleRecord(string id);
         Task<List<Notifications>> GetNTRecords();
+
+        Task AddABRecord(AllBills NT);
+        Task UpdateABRecord(AllBills NT);
+        Task DeleteABRecord(string id);
+        Task<AllBills> GetABSingleRecord(string id);
+        Task<List<AllBills>> GetABRecords();
+        Task<List<Food>> GetFOOD(bool withChildren);
     }
 }
