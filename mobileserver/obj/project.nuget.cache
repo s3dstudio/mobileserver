@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "60hBlz23qG0Y/tKlsI9WnMJxy4nKNLrltxoBJ4N9N9QmTShCDNVx1NhoR0OSF0Y40Pw5HJvOtULkoF1TS5oyDQ==",
+  "dgSpecHash": "hNKKEAGSHt6epPNR8PRuIjIGRW3oPc+kfb+NHuCchzHDKYIyu5Qx3oDCJu8XnCToCbRY0FU+eU0SDHtbe9W4/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Desktop\\git\\mobileserver\\mobileserver\\mobileserver.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\npgsql\\5.0.1.1\\npgsql.5.0.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.1\\npgsql.entityframeworkcore.postgresql.5.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
