@@ -17,7 +17,6 @@ namespace mobileserver.DAL
         public DbSet<Users> Users { get; set; }
         public DbSet<FoodsCart> FoodsCart { get; set; }
         public DbSet<Notifications> Notifications { get; set; }
-        public DbSet<AllBills> AllBills { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -30,8 +29,6 @@ namespace mobileserver.DAL
                 .HasKey("idCart");
             builder.Entity<Notifications>()
                 .HasKey("idnotification");
-            builder.Entity<AllBills>()
-                .HasKey("idCart");
 
         }
 

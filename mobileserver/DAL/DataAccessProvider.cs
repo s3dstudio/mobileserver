@@ -139,47 +139,5 @@ namespace mobileserver.DAL
             _context.Notifications.Update(FC);
             _context.SaveChangesAsync();
         }
-
-        //AllBills
-        public async Task AddABRecord(AllBills NT)
-        {
-            _context.AllBills.Add(NT);
-            _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteABRecord(string id)
-        {
-            Console.WriteLine(id);
-            var entity = _context.AllBills.FirstOrDefault(t => Convert.ToString(t.idCart) == id);
-            _context.AllBills.Remove(entity);
-            _context.SaveChangesAsync();
-        }
-
-        public async Task<List<AllBills>> GetABRecords()
-        {
-            return await _context.AllBills.OrderByDescending(m => EF.Property<string>(m, "idCart")).ToListAsync();
-        }
-
-        public async Task<AllBills> GetABSingleRecord(string id)
-        {
-            return await _context.AllBills.FirstOrDefaultAsync(m => m.idCart == id);
-        }
-
-        public async Task UpdateABRecord(AllBills FC)
-        {
-            _context.AllBills.Update(FC);
-            _context.SaveChangesAsync();
-        }
-
-        public async Task<List<Food>> GetFOOD(bool withChildren)
-        {
-            // Using the shadow property EF.Property<DateTime>(srcInfo)
-            if (withChildren)
-            {
-                return await _context.Food.Include(s => s.AllBills).OrderByDescending(srcInfo => EF.Property<string>(srcInfo, "idCart")).ToListAsync();
-            }
-
-            return await _context.Food.OrderByDescending(srcInfo => EF.Property<string>(srcInfo, "idfood")).ToListAsync();
-        }
     }
 }
