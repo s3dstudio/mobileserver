@@ -20,16 +20,29 @@ namespace mobileserver.DAL
         Task<Users> GetUSERSingleRecord(string id);
         Task<List<Users>> GetUSERRecords();
 
-        Task AddFCRecord(FoodsCart FC);
-        Task UpdateFCRecord(FoodsCart FC);
+        Task AddFCRecord(foodscart FC);
+        Task UpdateFCRecord(foodscart FC);
         Task DeleteFCRecord(string id);
-        Task<FoodsCart> GetFCSingleRecord(string id);
-        Task<List<FoodsCart>> GetFCRecords();
+        Task<foodscart> GetFCSingleRecord(string id);
+        Task<List<foodscart>> GetFCRecords();
+
+        Task AddFCDTRecord(FoodsCartDetail FC);
+        Task UpdateFCDTRecord(FoodsCartDetail FC);
+        Task DeleteFCDTRecord(string id);
+        Task<FoodsCartDetail> GetFCDTSingleRecord(string id);
+        Task<List<FoodsCartDetail>> GetFCDTRecords();
 
         Task AddNTRecord(Notifications NT);
         Task UpdateNTRecord(Notifications NT);
         Task DeleteNTRecord(string id);
         Task<Notifications> GetNTSingleRecord(string id);
         Task<List<Notifications>> GetNTRecords();
+
+        Task AddABRecord(AllBills NT);
+        Task UpdateABRecord(AllBills NT);
+        Task DeleteABRecord(string id);
+        Task<AllBills> GetABSingleRecord(string id);
+        Task<List<AllBills>> GetABRecords();
+        Task<List<Food>> GetFOOD(bool withChildren);
     }
 }

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace mobileserver.Model
 {
-    public class foodscart
+    public class FoodsCartData
     {
-        public string idcart { get; set; }
+        public string idCart { get; set; }
         public int table { get; set; }
         public int totalprice { get; set; }
         public string status { get; set; }
         public string time { get; set; }
-        //public string listitemid { get; set; }
+        public List<FoodsCartDetailData> listItem { get; set; }
+
+        public FoodsCartData()
+        {
+            listItem = new List<FoodsCartDetailData>();
+        }
     }
 }
