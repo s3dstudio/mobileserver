@@ -20,7 +20,7 @@ namespace mobileserver.DAL
         public async Task AddFOODRecord(Food FOOD)
         {
             _context.Food.Add(FOOD);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task DeleteFOODRecord(string id)
@@ -28,7 +28,7 @@ namespace mobileserver.DAL
             Console.WriteLine(id);
             var entity = _context.Food.FirstOrDefault(t => Convert.ToString(t.idfood) == id);
             _context.Food.Remove(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task<List<Food>> GetFOODRecords()
@@ -44,14 +44,14 @@ namespace mobileserver.DAL
         public async Task UpdateFOODRecord(Food FOOD)
         {
             _context.Food.Update(FOOD);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         //USER
         public async Task AddUSERRecord(Users USER)
         {
             _context.Users.Add(USER);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task DeleteUSERRecord(string id)
@@ -59,7 +59,7 @@ namespace mobileserver.DAL
             Console.WriteLine(id);
             var entity = _context.Users.FirstOrDefault(t => Convert.ToString(t.idUsers) == id);
             _context.Users.Remove(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task<List<Users>> GetUSERRecords()
@@ -75,45 +75,48 @@ namespace mobileserver.DAL
         public async Task UpdateUSERRecord(Users USER)
         {
             _context.Users.Update(USER);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         //FOODSCARTS
-        public async Task AddFCRecord(FoodsCart FC)
+        public async Task AddFCRecord(foodscart FC)
         {
-            _context.FoodsCart.Add(FC);
-            _context.SaveChangesAsync();
+            using (var context = _context)
+            {
+                context.foodscart.AddRange(FC);
+                context.SaveChanges();
+            }
         }
 
         public async Task DeleteFCRecord(string id)
         {
             Console.WriteLine(id);
-            var entity = _context.FoodsCart.FirstOrDefault(t => Convert.ToString(t.idCart) == id);
-            _context.FoodsCart.Remove(entity);
-            _context.SaveChangesAsync();
+            var entity = _context.foodscart.FirstOrDefault(t => Convert.ToString(t.idcart) == id);
+            _context.foodscart.Remove(entity);
+            _context.SaveChanges();
         }
 
-        public async Task<List<FoodsCart>> GetFCRecords()
+        public async Task<List<foodscart>> GetFCRecords()
         {
-            return await _context.FoodsCart.OrderByDescending(m => EF.Property<string>(m, "idCart")).ToListAsync();
+            return await _context.foodscart.OrderByDescending(m => EF.Property<string>(m, "idcart")).ToListAsync();
         }
 
-        public async Task<FoodsCart> GetFCSingleRecord(string id)
+        public async Task<foodscart> GetFCSingleRecord(string id)
         {
-            return await _context.FoodsCart.FirstOrDefaultAsync(m => m.idCart == id);
+            return await _context.foodscart.FirstOrDefaultAsync(m => m.idcart == id);
         }
 
-        public async Task UpdateFCRecord(FoodsCart FC)
+        public async Task UpdateFCRecord(foodscart FC)
         {
-            _context.FoodsCart.Update(FC);
-            _context.SaveChangesAsync();
+            _context.foodscart.Update(FC);
+            _context.SaveChanges();
         }
 
         //NOTIFICATIONS
         public async Task AddNTRecord(Notifications NT)
         {
-            _context.Notifications.Add(NT);
-            _context.SaveChangesAsync();
+            _context.Notifications.AddRangeAsync(NT);
+            _context.SaveChanges();
         }
 
         public async Task DeleteNTRecord(string id)
@@ -121,7 +124,7 @@ namespace mobileserver.DAL
             Console.WriteLine(id);
             var entity = _context.Notifications.FirstOrDefault(t => Convert.ToString(t.idnotification) == id);
             _context.Notifications.Remove(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task<List<Notifications>> GetNTRecords()
@@ -137,14 +140,14 @@ namespace mobileserver.DAL
         public async Task UpdateNTRecord(Notifications FC)
         {
             _context.Notifications.Update(FC);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         //AllBills
         public async Task AddABRecord(AllBills NT)
         {
             _context.AllBills.Add(NT);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task DeleteABRecord(string id)
@@ -152,7 +155,7 @@ namespace mobileserver.DAL
             Console.WriteLine(id);
             var entity = _context.AllBills.FirstOrDefault(t => Convert.ToString(t.idCart) == id);
             _context.AllBills.Remove(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task<List<AllBills>> GetABRecords()
@@ -168,18 +171,48 @@ namespace mobileserver.DAL
         public async Task UpdateABRecord(AllBills FC)
         {
             _context.AllBills.Update(FC);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async Task<List<Food>> GetFOOD(bool withChildren)
         {
             // Using the shadow property EF.Property<DateTime>(srcInfo)
-            if (withChildren)
-            {
-                return await _context.Food.Include(s => s.AllBills).OrderByDescending(srcInfo => EF.Property<string>(srcInfo, "idCart")).ToListAsync();
-            }
+            //if (withChildren)
+            //{
+            //    return await _context.Food.Include(s => s.AllBills).OrderByDescending(srcInfo => EF.Property<string>(srcInfo, "idCart")).ToListAsync();
+            //}
 
             return await _context.Food.OrderByDescending(srcInfo => EF.Property<string>(srcInfo, "idfood")).ToListAsync();
+        }
+
+        public async Task AddFCDTRecord(FoodsCartDetail FC)
+        {
+            _context.FoodsCartDetail.Add(FC);
+            _context.SaveChanges();
+        }
+
+        public async Task UpdateFCDTRecord(FoodsCartDetail FC)
+        {
+            _context.FoodsCartDetail.Update(FC);
+            _context.SaveChanges();
+        }
+
+        public async Task DeleteFCDTRecord(string id)
+        {
+            Console.WriteLine(id);
+            var entity = _context.FoodsCartDetail.FirstOrDefault(t => Convert.ToString(t.idfcdetail) == id);
+            _context.FoodsCartDetail.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public async Task<FoodsCartDetail> GetFCDTSingleRecord(string id)
+        {
+            return await _context.FoodsCartDetail.FirstOrDefaultAsync(m => m.idfcdetail == id);
+        }
+
+        public async Task<List<FoodsCartDetail>> GetFCDTRecords()
+        {
+            return await _context.FoodsCartDetail.OrderByDescending(m => EF.Property<string>(m, "idfcdetail")).ToListAsync();
         }
     }
 }

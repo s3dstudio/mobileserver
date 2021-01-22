@@ -19,7 +19,7 @@ namespace mobileserver.Controllers
         }
 
         [HttpGet]
-        [Route("Food")]
+        [Route("get")]
         [ProducesResponseType(typeof(IEnumerable<Food>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Getfood(bool withChildren)
         {
