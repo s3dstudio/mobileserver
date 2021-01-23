@@ -216,6 +216,7 @@ namespace mobileserver.DAL
         {
             Console.WriteLine(id);
             var entity = _context.FoodsCartDetail.FirstOrDefault(t => Convert.ToString(t.idfcdetail) == id);
+            if(entity != null)
             { 
                 _context.FoodsCartDetail.Remove(entity);
                 _context.SaveChanges();
