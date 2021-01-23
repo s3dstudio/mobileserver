@@ -62,7 +62,7 @@ namespace mobileserver.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(string id)
         {
-            _dataAccessProvider.DeleteFCRecord(id);
+            _dataAccessProvider.DeleteFCDTRecord(id);
             return Ok();
         }
     }
