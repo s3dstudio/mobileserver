@@ -23,12 +23,15 @@ namespace mobileserver.DAL
             _context.SaveChanges();
         }
 
-        public async Task DeleteFOODRecord(string id)
+        public void DeleteFOODRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.Food.FirstOrDefault(t => Convert.ToString(t.idfood) == id);
-            _context.Food.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.Food.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<List<Food>> GetFOODRecords()
@@ -54,12 +57,15 @@ namespace mobileserver.DAL
             _context.SaveChanges();
         }
 
-        public async Task DeleteUSERRecord(string id)
+        public void DeleteUSERRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.Users.FirstOrDefault(t => Convert.ToString(t.idUsers) == id);
-            _context.Users.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.Users.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<List<Users>> GetUSERRecords()
@@ -88,12 +94,15 @@ namespace mobileserver.DAL
             }
         }
 
-        public async Task DeleteFCRecord(string id)
+        public void DeleteFCRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.foodscart.FirstOrDefault(t => Convert.ToString(t.idcart) == id);
-            _context.foodscart.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.foodscart.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<List<foodscart>> GetFCRecords()
@@ -119,12 +128,15 @@ namespace mobileserver.DAL
             _context.SaveChanges();
         }
 
-        public async Task DeleteNTRecord(string id)
+        public void DeleteNTRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.Notifications.FirstOrDefault(t => Convert.ToString(t.idnotification) == id);
-            _context.Notifications.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.Notifications.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<List<Notifications>> GetNTRecords()
@@ -150,12 +162,15 @@ namespace mobileserver.DAL
             _context.SaveChanges();
         }
 
-        public async Task DeleteABRecord(string id)
+        public void DeleteABRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.AllBills.FirstOrDefault(t => Convert.ToString(t.idCart) == id);
-            _context.AllBills.Remove(entity);
-            _context.SaveChanges();
+            if (entity != null)
+            {
+                _context.AllBills.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<List<AllBills>> GetABRecords()
@@ -197,12 +212,14 @@ namespace mobileserver.DAL
             _context.SaveChanges();
         }
 
-        public async Task DeleteFCDTRecord(string id)
+        public void DeleteFCDTRecord(string id)
         {
             Console.WriteLine(id);
             var entity = _context.FoodsCartDetail.FirstOrDefault(t => Convert.ToString(t.idfcdetail) == id);
-            _context.FoodsCartDetail.Remove(entity);
-            _context.SaveChanges();
+            { 
+                _context.FoodsCartDetail.Remove(entity);
+                _context.SaveChanges();
+            }
         }
 
         public async Task<FoodsCartDetail> GetFCDTSingleRecord(string id)

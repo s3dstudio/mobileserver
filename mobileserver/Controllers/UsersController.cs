@@ -53,12 +53,6 @@ namespace mobileserver.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(string id)
         {
-            var data = _dataAccessProvider.GetUSERSingleRecord(id);
-            Console.WriteLine(id);
-            if (data == null)
-            {
-                return NotFound();
-            }
             _dataAccessProvider.DeleteUSERRecord(id);
             return Ok();
         }
