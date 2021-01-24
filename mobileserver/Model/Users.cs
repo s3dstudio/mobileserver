@@ -12,5 +12,7 @@ namespace mobileserver.Model
         public string username { get; set; }
         public string password { get; set; }
         public string userToken { get; set; }
+        public string role { get; set; }
+        public string deviceID { get; set; }
     }
 }
